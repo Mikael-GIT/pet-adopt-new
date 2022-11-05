@@ -28,30 +28,31 @@
 
   <div class="category-slider ion-padding-start">
     <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
-      <ion-slide *ngFor="let category of categories">
+      <ion-slide *ngFor="let categoria of categorias">
         <ion-col>
-          <h4>{{ category.name }}</h4>
-          <img src="{{ category.image }}" />
+          <h4>{{ categoria.nome }}</h4>
+          <img src="{{ categoria.imagem }}" />
         </ion-col>
       </ion-slide>
     </ion-slides>
   </div>
 
   <div class="title ion-padding">
-    <h2 class="font-bold">Featured</h2>
-    <p>See all</p>
+    <h2 class="font-bold">Animais</h2>
   </div>
 
   <div class="product-slider ion-padding-start">
-    <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
-      <ion-slide *ngFor="let product of featuredProducts">
-        <ion-col class="ion-text-left" routerLink="/item-details" routerDirection="forward">
-          <img src="{{ product.image }}" />
+      <ion-card *ngFor="let product of featuredProducts">
+        <ion-row>
+        <ion-col size="6"class="ion-text-left" (click)="showPetInfo(product.id)" routerLink="/item-details" routerDirection="forward">
+          <img src="{{ product.image }}"/>
+        </ion-col>
+        <ion-col size="6" class="ion-text-start" style="align-items: flex-start;" routerLink="/item-details" routerDirection="forward">
           <p>${{ product.price }}</p>
           <h6>{{ product.name }}</h6>
         </ion-col>
-      </ion-slide>
-    </ion-slides>
+      </ion-row>
+      </ion-card>
   </div>
 
 </ion-content>

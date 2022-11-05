@@ -1,5 +1,7 @@
+import { PetInfoService } from './pet-info.service';
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Animation, AnimationController } from '@ionic/angular';
+import { Animation, AnimationController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-item-details',
@@ -11,12 +13,38 @@ export class ItemDetailsPage implements OnInit {
   selectedColor: number;
   activeVariation: string;
 
+  public id: any;
+
+  animal = {
+    id: '',
+    nome: '',
+    sexo: '',
+    idade: '',
+    vacinado: false,
+    porte: '',
+    cor: '',
+    descricao: '',
+    imagem: '',
+    raca: '',
+    categoria_id: ''
+};
+
   constructor(
     private animatioCntrl: AnimationController,
-  ) { }
+    private activatedRoute: ActivatedRoute, 
+    private navCtrl: NavController, 
+    private petInfoService: PetInfoService
+  ) { 
+    this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    console.log(this.id);
+  }
 
   ngOnInit() {
     this.activeVariation = 'size';
+    this.petInfoService.read(this.id).subscribe(animal => {
+      console.log(animal);
+      this.animal = animal;
+    });
   }
 
   segmentChanged(e: any) {
