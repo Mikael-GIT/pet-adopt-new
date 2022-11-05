@@ -15,7 +15,7 @@ export interface IProduct {
   image: string,
 }
 
-@Injectable({
+@Injectable ({
   providedIn: 'root'
 })
 export class DataService {
@@ -27,21 +27,17 @@ export class DataService {
 
     let cat1: ICategory = {
       id: 1,
-      name: 'Womens',
+      name: 'Cachorro',
       image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7OMmTpLw7ZKn0NljTFmpac4UPos5Q4kFs1OCANCscEXJBgd-zR1W-ug63k2we9hCJ0RA&usqp=CAU'
     }
     let cat2: ICategory = {
       id: 2,
-      name: 'Mens',
-      image: '../../assets/categories/category-2.png'
-    }
-    let cat3: ICategory = {
-      id: 3,
-      name: 'Kids',
-      image: '../../assets/categories/category-3.png'
+      name: 'Gato',
+      image: 'https://img.freepik.com/fotos-premium/gato-vermelho-isolado-em-um-fundo-amarelo_116815-331.jpg?w=1380'
     }
 
-    categories.push(cat1, cat2, cat3);
+
+    categories.push(cat1, cat2);
 
     return categories;
   }
