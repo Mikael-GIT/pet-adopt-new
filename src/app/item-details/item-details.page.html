@@ -18,21 +18,21 @@
 <ion-content>
   <ion-slides pager="true" class="product-slider">
     <ion-slide>
-      <img src="../../assets/product-slider/prod-slide1.png" />
+      <img [src]="animal.imagem" />
     </ion-slide>
     <ion-slide>
       <img src="../../assets/product-slider/prod-slide1.png" />
     </ion-slide>
     <ion-slide>
-      <img src="../../assets/product-slider/prod-slide1.png" />
+              <img src="../../assets/product-slider/prod-slide1.png" />
     </ion-slide>
   </ion-slides>
 
   <div class="ion-padding-vertical">
-    <h1 class="item-name">Black turtleneck top</h1>
+    <h1 class="item-name">{{animal.nome}}</h1>
 
     <h4 class="price">
-      Macho
+      {{animal.sexo}}
     </h4>
   </div>
 
@@ -48,14 +48,13 @@
           <img src="../../assets/product-slider/seringa.png" />
         </div>
 
-        Sim
+        {{animal.vacinado}}
       </ion-col>
       <ion-col size="6">
         <div class="rating">
           <img src="../../assets/product-slider/medicine.png" />
         </div>
-
-        Sim
+        {{animal.vermifugado}}
       </ion-col>
 
     </ion-row>
@@ -65,14 +64,13 @@
           <img src="../../assets/product-slider/birthday.png" />
         </div>
 
-        2 anos
+        {{animal.idade}}
       </ion-col>
       <ion-col size="6">
         <div class="rating">
           <img src="../../assets/product-slider/weighing-scale.png" />
         </div>
-
-         14 kg
+         {{animal.porte}}
       </ion-col>
 
     </ion-row>
@@ -86,7 +84,7 @@
     <h5>Descrição</h5>
 
     <p>
-      A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.
+      {{animal.descricao}}
     </p>
 
   </div>

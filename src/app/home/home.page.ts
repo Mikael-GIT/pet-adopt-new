@@ -78,6 +78,6 @@ export class HomePage implements OnInit {
   }
 
   showPetInfo(id: string){
-    this.router.navigate([`item-details/2`]);
+    this.router.navigate([`item-details/3`]);
   }
 }

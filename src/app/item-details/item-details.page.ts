@@ -26,6 +26,7 @@ export class ItemDetailsPage implements OnInit {
     descricao: '',
     imagem: '',
     raca: '',
+    vermifugado: false,
     categoria_id: ''
 };
 
