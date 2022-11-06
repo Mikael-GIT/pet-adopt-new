@@ -13,7 +13,12 @@ export class HomeService {
 
   constructor(private http: HttpClient) { }
 
-  readCategoria(): Observable<Categoria[]> {
+  readCategorias(): Observable<Categoria[]> {
     return this.http.get<Categoria[]>(`${this.baseUrl}`);
+  }
+
+
+  readCategoria(id:string): Observable<Categoria> {
+    return this.http.get<Categoria>(`${this.baseUrl}/${id}`);
   }
 }

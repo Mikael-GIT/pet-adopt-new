@@ -1,3 +1,4 @@
+import { Categoria } from './categoria.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HomeService } from './home.service';
 import { Component, OnInit } from '@angular/core';
@@ -15,7 +16,9 @@ export class HomePage implements OnInit {
 
 
 
-  id: string;
+  id: string = "0";
+
+  categoria: Categoria;
 
   categorias = [
     {
@@ -64,13 +67,20 @@ export class HomePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.categorias = [];
+
     this.animais = [];
 
-    this.homeService.readCategoria().subscribe(categorias => {
+    this.homeService.readCategorias().subscribe(categorias => {
       this.categorias = categorias;
       console.log(this.categorias);
     });
+
+
+    this.homeService.readCategoria("2").subscribe(categoria => {
+      categoria.animais.forEach(animal => this.animais.push(animal));
+      console.log(this.animais);
+    });
+;
 
     this.categories = this.data.getCategories();
     this.featuredProducts = this.data.getFeaturedProducts();
@@ -78,6 +88,13 @@ export class HomePage implements OnInit {
   }
 
   showPetInfo(id: string){
-    this.router.navigate([`item-details/3`]);
+    this.router.navigate([`item-details/${id}`]);
+  }
+
+  changeCategory(categoria: Categoria){
+    this.animais = [];
+    this.homeService.readCategoria(categoria.id).subscribe(categoria => {
+      categoria.animais.forEach(animal => this.animais.push(animal));
+    });;
   }
 }

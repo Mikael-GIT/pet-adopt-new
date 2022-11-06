@@ -110,6 +110,44 @@ ion-menu-button {
     }
 }
 
+
+.item-info {
+    p {
+        font-size: 16px;
+    }
+
+    p:nth-child(1) {
+        color: #434343;
+    }
+    p:nth-child(2) {
+        color: #565656;
+    }
+    p:nth-child(3) {
+        color: #565656;
+    }
+
+    .qty-selector {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f6f6f6;
+        border-radius: 5px;
+        margin-top: 10px;
+
+        ion-button {
+            --color: #565656;
+            font-size: 16px;
+            margin-left: 8px;
+            margin-right: 8px;
+        }
+
+        ion-label {
+            color: #565656 !important;
+            font-size: 16px;
+        }
+    }
+}
+
 // Removing highlight when focused/clicked on product
 ion-slide:focus {
     outline: none !important;
