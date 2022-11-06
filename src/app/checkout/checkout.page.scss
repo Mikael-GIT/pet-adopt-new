@@ -1,3 +1,6 @@
+.error-message {
+    color: var(--ion-color-danger);
+}
 .backbtn {
     margin-left: 15px;
 }
@@ -18,106 +21,53 @@ ion-content {
     color: #434343;
 }
 
-.cart-items {
-    ion-card {
-        margin-left: 0;
-        margin-right: 0;
-        border-radius: 0;
-
-        ion-card-content {
-            display: flex;
-            position: relative;
-
-            .item-img {
-                display: flex;
-                align-items: center;
-                margin-right: 16px;
-
-                img {
-                    object-fit: cover;
-                    width: 110px;
-                    height: 110px;
-                    box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.16);
-                }
-            }
-
-            .item-info {
-                p {
-                    font-size: 16px;
-                }
-
-                p:nth-child(1) {
-                    color: #434343;
-                }
-                p:nth-child(2) {
-                    color: #919191;
-                }
-                p:nth-child(3) {
-                    color: var(--ion-color-primary);
-                }
-
-                .qty-selector {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    background: #f6f6f6;
-                    border-radius: 5px;
-                    margin-top: 10px;
-
-                    ion-button {
-                        --color: #565656;
-                        font-size: 16px;
-                        margin-left: 8px;
-                        margin-right: 8px;
-                    }
-
-                    ion-label {
-                        color: #565656 !important;
-                        font-size: 16px;
-                    }
-                }
-            }
-        }
-    }
+// This will remove iOS Header Line
+ion-toolbar {
+    --border-width: 0 !important;
 }
 
-.address {
-    ion-item {
-        --padding-start: 0;
-        font-size: 18px;
-        color: #434343;
-
-        ion-badge {
-            width: 12px;
-            height: 12px;
-            padding: 0;
-            border-radius: 50%;
-        }
-    }
+// Removing Android Header Line
+.header-md::after {
+    background: none !important;
 }
 
-hr {
-    background: #97979713;
+.container h1 {
+    margin-top: 0;
 }
 
-.cart-total {
-    ion-item {
-        --padding-start: 0;
-        --inner-padding-end: 0;
-
-        ion-label {
-            margin-right: 0;
-        }
-
-        ion-label:nth-child(1) {
-            color: #919191;
-        }
-
-        ion-label:nth-child(2) {
-            color: #434343;
-        }
-    }
+.backbtn {
+    margin-left: 20px;
 }
+
+.form-container {
+    margin-top: 48px;
+}
+
+.form-container ion-item {
+    --padding-start: 0;
+    --border-color: #DADADA;
+}
+
+.form-container ion-item ion-label {
+    color: #A6A6A6;
+}
+
+.form-container ion-item ion-icon {
+    margin-top: auto;
+    color: #c6cbd4;
+}
+
+.form-container ion-button {
+    margin-top: 48px;
+}
+
+
+
+
+
+
+
+
 
 ion-footer {
     padding-left: 20px;
