@@ -1,3 +1,5 @@
+import { LocalStorageService } from './../services/local-storage.service';
+import { AdoptService } from './adopt.service';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 @Component({
@@ -6,11 +8,54 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./checkout.page.scss'],
 })
 
+
+
 export class CheckoutPage {
-  //Dados basicos
-  get nome() {
-    return this.registrationForm.get('nome');
+
+  adoptionData = {
+    usuario_id: '',
+    animal_id: '',
+    status: '',
   }
+
+
+  user = { 
+    id: '',
+    idade: '',
+    cpf: '',
+    profissao: '',
+    linkFacebook: '',
+    linkInstagram: '',
+    possuiOuPossuiuPets: false,
+    motivoAdocao: '',
+    numResidentesDomicilio: '',
+    residentesConcordamAdocao: false,
+    teraLivreAcessoAosComodos: false,
+    possuiBebeOuPretende: false,
+    residentesPossuiAlergia: false,
+    isCastrados: false,
+    concordaManterInformados: false,
+    aceitaVisitasPosAdocao: false,
+    adotouoOuDoouUmPet: false,
+    tipoResidencia: '',
+    ambientePropicioParaCriacao: false,
+    
+    endereco: {
+      cep: '',
+      logradouro: '',
+      numero: '',
+      complemento: '',
+      bairro: '',
+      cidade: '',
+    }, adocao: {
+      usuario_id: '',
+      animal_id: '',
+      status: '',
+    },
+    dataCriacao: '',
+  }
+
+  //Dados basicos
 
   get idade() {
     return this.registrationForm.get('idade');
@@ -24,12 +69,12 @@ export class CheckoutPage {
     return this.registrationForm.get('profissao');
   }
 
-  get facebook() {
-    return this.registrationForm.get('facebook');
+  get linkFacebook() {
+    return this.registrationForm.get('linkFacebook');
   }
 
-  get instagram() {
-    return this.registrationForm.get('instagram');
+  get linkInstagram() {
+    return this.registrationForm.get('linkInstagram');
   }
 
   //Endereco
@@ -112,10 +157,6 @@ export class CheckoutPage {
 
 
   public errorMessages = {
-    nome: [
-        {type: 'required', message: 'Digite seu nome'},
-        {type: 'maxlength', message: 'Nome não pode passar de 50 Caracteres'}
-    ],
     idade: [
       {type: 'required', message: 'Digite seu nome'},
       {type: 'maxlength', message: 'Nome não pode passar de 50 Caracteres'}
@@ -128,11 +169,11 @@ export class CheckoutPage {
       {type: 'required', message: 'Digite seu nome'},
       {type: 'maxlength', message: 'Nome não pode passar de 50 Caracteres'}
     ],
-    facebook: [
+    linkFacebook: [
       {type: 'required', message: 'Digite seu nome'},
       {type: 'maxlength', message: 'Nome não pode passar de 50 Caracteres'}
     ],
-    instagram: [
+    linkInstagram: [
       {type: 'required', message: 'Digite seu nome'},
       {type: 'maxlength', message: 'Nome não pode passar de 50 Caracteres'}
     ],
@@ -219,8 +260,8 @@ export class CheckoutPage {
     idade: ['',[Validators.required, Validators.maxLength(5)]],
     cpf: ['',[Validators.required, Validators.maxLength(5)]],
     profissao: ['',[Validators.required, Validators.maxLength(5)]],
-    facebook: ['',[Validators.required, Validators.maxLength(5)]],
-    instagram: ['',[Validators.required, Validators.maxLength(5)]],
+    linkFacebook: ['',[Validators.required, Validators.maxLength(5)]],
+    linkInstagram: ['',[Validators.required, Validators.maxLength(5)]],
     cep: ['',[Validators.required, Validators.maxLength(5)]],
     logradouro: ['',[Validators.required, Validators.maxLength(5)]],
     numero: ['',[Validators.required, Validators.maxLength(5)]],
@@ -242,11 +283,26 @@ export class CheckoutPage {
     ambientePropicioParaCriacao: ['',[Validators.required, Validators.maxLength(5)]],
   });
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private adoptService: AdoptService, private localStorageService: LocalStorageService) {}
 
   public submit() {
     console.log("cheguei aqui")
-    console.log(this.registrationForm.value);
-    
+    this.saveProfileData(this.registrationForm.value);
+    this.adopt();
+
+  }
+
+
+  saveProfileData(profileData: any){
+    this.adoptService.updateProfile(profileData).subscribe(user => console.log(user));
+  }
+
+  adopt(){
+    this.adoptionData.animal_id = this.localStorageService.get("id_animal");
+    this.adoptionData.usuario_id = this.localStorageService.get("user_id");
+    this.adoptionData.status = "Solicitado";
+    this.adoptService.adopt(this.adoptionData).subscribe(adoption => {
+      console.log(adoption);
+    });
   }
 }

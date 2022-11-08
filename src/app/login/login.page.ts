@@ -39,11 +39,10 @@ export class LoginPage implements OnInit {
       this.btnLogin = true;
 
       if (this.loginDados) {
-        this.loginService.create(this.loginDados).subscribe(
+        this.loginService.login(this.loginDados).subscribe(
           (result) => {
             if (result.id != null) {
-              this.serviceLS.set('id', result.id);
-              this.serviceLS.set('login', result.login);
+              this.serviceLS.set('user_id', result.id);
               this.util.setMenuState(true);
               this.navCtrl.navigateRoot('/home', { animationDirection: 'forward' });
             }

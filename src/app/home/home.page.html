@@ -41,6 +41,10 @@
     <h2 class="font-bold">Animais</h2>
   </div>
 
+  <div class="title ion-padding" *ngIf="animais.length == 0">
+    <h2 class="font-bold">Não possuímos pets cadastrados para essa categoria. Aguarde e tente novamente mais tarde!</h2>
+  </div>
+
   <div class="product-slider ion-padding-start">
       <ion-card *ngFor="let animal of animais">
         <ion-row (click)="showPetInfo(animal.id)">

@@ -65,20 +65,20 @@
 
           <ion-item>
             <ion-label position="floating">Link do Facebook</ion-label>
-                <ion-input formControlName="facebook"  autocapitalize inputmode="text"></ion-input>
+                <ion-input formControlName="linkFacebook"  autocapitalize inputmode="text"></ion-input>
             </ion-item>
-            <div *ngFor="let error of errorMessages.facebook">
-              <ng-container *ngIf="facebook.hasError(error.type) && (facebook.dirty || facebook.touched)">
+            <div *ngFor="let error of errorMessages.linkFacebook">
+              <ng-container *ngIf="linkFacebook.hasError(error.type) && (linkFacebook.dirty || linkFacebook.touched)">
                   <small class="error-message">{{error.message}}</small>
               </ng-container>
           </div>
 
           <ion-item>
             <ion-label position="floating">Link do Instagram</ion-label>
-                <ion-input formControlName="instagram"  autocapitalize inputmode="text"></ion-input>
+                <ion-input formControlName="linkInstagram"  autocapitalize inputmode="text"></ion-input>
             </ion-item>
             <div *ngFor="let error of errorMessages.nome">
-              <ng-container *ngIf="instagram.hasError(error.type) && (instagram.dirty || instagram.touched)">
+              <ng-container *ngIf="linkInstagram.hasError(error.type) && (linkInstagram.dirty || linkInstagram.touched)">
                   <small class="error-message">{{error.message}}</small>
               </ng-container>
           </div>
@@ -216,15 +216,6 @@
               </ng-container>
           </div>
 
-          <ion-item>
-            <ion-label position="floating">Em que tipo de situação você pensaria em devolver ou doar o bichinho adotado?</ion-label>
-                <ion-input formControlName="nome"  autocapitalize inputmode="text"></ion-input>
-            </ion-item>
-            <div *ngFor="let error of errorMessages.nome">
-              <ng-container *ngIf="nome.hasError(error.type) && (nome.dirty || nome.touched)">
-                  <small class="error-message">{{error.message}}</small>
-              </ng-container>
-          </div>
 
           <h3>Seus Animais</h3>
           <ion-item>

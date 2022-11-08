@@ -1,3 +1,4 @@
+import { LocalStorageService } from './../services/local-storage.service';
 import { Router } from '@angular/router';
 import { Cadastro } from './cadastro.model';
 import { CadastroService } from './cadastro.service';
@@ -27,7 +28,8 @@ export class SignupPage implements OnInit {
     private navCtrl: NavController,
     private cadastroService: CadastroService,
     private toastController: ToastController,
-    private router: Router
+    private router: Router,
+    private serviceLS: LocalStorageService
   ) { }
 
   ngOnInit() {
@@ -38,6 +40,7 @@ export class SignupPage implements OnInit {
     this.cadastroService.create(this.cadastroDados).subscribe(
       (result) => {
         if (result.id != null) {
+          this.serviceLS.set("user_id", result.id);
           this.presentToast('top', "Cadastro realizado com sucesso!");
           this.navCtrl.navigateRoot('/home', { animationDirection: 'forward' });
         }
