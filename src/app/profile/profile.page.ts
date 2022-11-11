@@ -1,3 +1,6 @@
+import { Profile } from './profile.model';
+import { ProfileService } from './profile.service';
+import { LocalStorageService } from './../services/local-storage.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePage implements OnInit {
 
-  constructor() { }
+  profile: Profile = { 
+    id: '',
+    nome: '',
+    email: '',
+    telefone: '',
+    cpf: '',
+    endereco: {
+      cep: '',
+      logradouro: '',
+      numero: '',
+      complemento: '',
+      bairro: '',
+      cidade: '',
+    }
+  }
+
+  constructor(private profileService: ProfileService, private localStorageService: LocalStorageService) { }
 
   ngOnInit() {
+    this.getProfileById();
+  }
+
+  getProfileById(){
+
+    this.profileService.getProfileById(this.localStorageService.get("user_id")).subscribe(profile => {
+      console.log(profile);
+      this.profile = profile}
+      );
   }
 
 }

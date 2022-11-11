@@ -20,17 +20,7 @@
   <div class="form-container">
     <form [formGroup]="registrationForm" (ngSubmit)="submit()">
         <ion-list>
-            <h3>Dados Pessoais</h3>
-            <ion-item>
-            <ion-label position="floating">Nome Completo</ion-label>
-                <ion-input formControlName="nome"  autocapitalize inputmode="text"></ion-input>
-            </ion-item>
-            <div *ngFor="let error of errorMessages.nome">
-              <ng-container *ngIf="nome.hasError(error.type) && (nome.dirty || nome.touched)">
-                  <small class="error-message">{{error.message}}</small>
-              </ng-container>
-          </div>
-
+          <h3>Dados Pessoais</h3>
           <ion-item>
             <ion-label position="floating">Idade</ion-label>
                 <ion-input formControlName="idade"  autocapitalize inputmode="text"></ion-input>
@@ -77,7 +67,7 @@
             <ion-label position="floating">Link do Instagram</ion-label>
                 <ion-input formControlName="linkInstagram"  autocapitalize inputmode="text"></ion-input>
             </ion-item>
-            <div *ngFor="let error of errorMessages.nome">
+            <div *ngFor="let error of errorMessages.linkInstagram">
               <ng-container *ngIf="linkInstagram.hasError(error.type) && (linkInstagram.dirty || linkInstagram.touched)">
                   <small class="error-message">{{error.message}}</small>
               </ng-container>

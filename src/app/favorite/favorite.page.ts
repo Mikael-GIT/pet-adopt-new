@@ -1,3 +1,7 @@
+import { Adocao } from './adocao.model';
+import { AdoptionService } from './adoptions.service';
+import { DataService } from './../data.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavoritePage implements OnInit {
 
-  constructor() { }
+  
+  constructor(
+    private router: Router,
+    private data: DataService,
+    private adoptionService: AdoptionService, 
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+
+  
+
+    this.adoptionService.getAdoptions("1").subscribe(adoptions => {
+    });
   }
 
 }

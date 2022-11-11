@@ -76,7 +76,7 @@ export class HomePage implements OnInit {
     });
 
 
-    this.homeService.readCategoria("2").subscribe(categoria => {
+    this.homeService.readCategoria("1").subscribe(categoria => {
       categoria.animais.forEach(animal => this.animais.push(animal));
       console.log(this.animais);
     });
