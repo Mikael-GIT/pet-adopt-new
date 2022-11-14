@@ -15,7 +15,7 @@ export class HomePage implements OnInit {
   public bestSellProducts = [];
 
 
-
+  dataDisatnce: any;
   id: string = "0";
 
   categoria: Categoria;
@@ -69,6 +69,12 @@ export class HomePage implements OnInit {
   ngOnInit() {
 
     this.animais = [];
+
+    this.homeService.getDistance().subscribe(data =>{
+      this.dataDisatnce = data.value
+      console.log(this.data)
+    }
+    );
 
     this.homeService.readCategorias().subscribe(categorias => {
       this.categorias = categorias;

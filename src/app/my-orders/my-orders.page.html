@@ -25,12 +25,17 @@
         </div>
 
         <div class="item-info">
-          <p>Women t-shirt</p>
-          <p>Lotto.LTD</p>
-          <p>$34.00</p>
+          <ion-label>Valor: </ion-label>
+          <ion-input [(ngModel)]="payment.transactionAmount"></ion-input>
+          <ion-label>Descrição: </ion-label>
+          <ion-input [(ngModel)]="payment.description"></ion-input>
+
+          <img src="{{paymentResponse.qrCodeBase64}}"/>
+          <p>pix copia e cola:</p>
+          <p>{{paymentResponse.qrCode}}</p>
         </div>
+        <ion-button expand="block" class="main-button" (click)="doar()">Doar</ion-button>
       </ion-card-content>
     </ion-card>
-    <ion-button expand="block" class="main-button">Avançar</ion-button>
   </div>
 </ion-content>

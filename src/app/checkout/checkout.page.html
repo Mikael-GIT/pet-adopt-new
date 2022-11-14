@@ -204,10 +204,7 @@
             >Já possui ou possuiu animais e estimação?</ion-label
           >
         </ion-item>
-        <ion-segment
-          value="false"
-          (ionChange)="changerPossuiOuPossuiuPets($event)"
-        >
+        <ion-segment formControlName="possuiOuPossuiuPets">
           <ion-segment-button value="true">
             <ion-label>Sim</ion-label>
           </ion-segment-button>
@@ -242,8 +239,8 @@
         </div>
 
         <ion-item>
-          <ion-label position="floating"
-          class="ion-text-wrap" >Na sua casa, são quantos adultos e quantas crianças?
+          <ion-label position="floating" class="ion-text-wrap"
+            >Na sua casa, são quantos adultos e quantas crianças?
           </ion-label>
           <ion-input
             formControlName="numResidentesDomicilio"
@@ -266,10 +263,7 @@
           >
         </ion-item>
 
-        <ion-segment
-          value="false"
-          (ionChange)="changerResidentesConcordamAdocao($event)"
-        >
+        <ion-segment formControlName="residentesConcordamAdocao">
           <ion-segment-button value="true">
             <ion-label>Sim</ion-label>
           </ion-segment-button>
@@ -290,16 +284,8 @@
             >O bichinho terá livre acesso a toda a casa ou terá um local
             separado pra ele?</ion-label
           >
-          <ion-input
-            formControlName="teraLivreAcessoAosComodos"
-            autocapitalize
-            inputmode="text"
-          ></ion-input>
         </ion-item>
-        <ion-segment
-          value="false"
-          (ionChange)="changerTeraLivreAcessoAosComodos($event)"
-        >
+        <ion-segment formControlName="teraLivreAcessoAosComodos">
           <ion-segment-button value="true">
             <ion-label>Sim</ion-label>
           </ion-segment-button>
@@ -320,17 +306,9 @@
             >Você ou alguém de sua família está esperando um bebê ou pretendem
             ter?</ion-label
           >
-          <ion-input
-            formControlName="possuiBebeOuPretende"
-            autocapitalize
-            inputmode="text"
-          ></ion-input>
         </ion-item>
 
-        <ion-segment
-          value="false"
-          (ionChange)="changerPossuiBebeOuPretende($event)"
-        >
+        <ion-segment formControlName="possuiBebeOuPretende">
           <ion-segment-button value="true">
             <ion-label>Sim</ion-label>
           </ion-segment-button>
@@ -351,10 +329,7 @@
             >Alguém na sua casa é ou pode ser alérgico a animais?
           </ion-label>
         </ion-item>
-        <ion-segment
-          value="false"
-          (ionChange)="changerResidentesPossuiAlergia($event)"
-        >
+        <ion-segment formControlName="residentesPossuiAlergia">
           <ion-segment-button value="true">
             <ion-label>Sim</ion-label>
           </ion-segment-button>
@@ -370,36 +345,13 @@
           </ng-container>
         </div>
 
-        <h3>Seus Animais</h3>
-        <ion-item>
-          <ion-label position="floating">O seu pet é castrado? </ion-label>
-        </ion-item>
-        <ion-segment value="false" (ionChange)="changerIsCastrados($event)">
-          <ion-segment-button value="true">
-            <ion-label>Sim</ion-label>
-          </ion-segment-button>
-          <ion-segment-button value="false">
-            <ion-label>Não</ion-label>
-          </ion-segment-button>
-        </ion-segment>
-        <div *ngFor="let error of errorMessages.isCastrados">
-          <ng-container
-            *ngIf="isCastrados.hasError(error.type) && (isCastrados.dirty || isCastrados.touched)"
-          >
-            <small class="error-message">{{error.message}}</small>
-          </ng-container>
-        </div>
-
         <ion-item>
           <ion-label position="floating"
-          >Você concorda em nos manter informados sobre o animal que adotou
+            >Você concorda em nos manter informados sobre o animal que adotou
             conosco?
           </ion-label>
         </ion-item>
-        <ion-segment
-          value="false"
-          (ionChange)="changerConcordaManterInformados($event)"
-        >
+        <ion-segment formControlName="concordaManterInformados">
           <ion-segment-button value="true">
             <ion-label>Sim</ion-label>
           </ion-segment-button>
@@ -420,10 +372,7 @@
             >Aceitaria receber visitas após a adoção?</ion-label
           >
         </ion-item>
-        <ion-segment
-          value="false"
-          (ionChange)="changerAceitaVisitasPosAdocao($event)"
-        >
+        <ion-segment formControlName="aceitaVisitasPosAdocao">
           <ion-segment-button value="true">
             <ion-label>Sim</ion-label>
           </ion-segment-button>
@@ -444,10 +393,7 @@
             >Você já doou ou adotou um outro pet?</ion-label
           >
         </ion-item>
-        <ion-segment
-          value="false"
-          (ionChange)="changerAdotouoOuDoouUmPet($event)"
-        >
+        <ion-segment formControlName="adotouoOuDoouUmPet">
           <ion-segment-button value="true">
             <ion-label>Sim</ion-label>
           </ion-segment-button>
@@ -463,57 +409,74 @@
           </ng-container>
         </div>
 
-        <ion-item>
-          <ion-label position="floating"
-            >Você reside em casa ou apartamento?
-          </ion-label>
-        </ion-item>
-        <ion-segment
-          value="Casa"
-          (ionChange)="changerConcordaManterInformados($event)"
-        >
-          <ion-segment-button value="Casa">
-            <ion-label>Casa</ion-label>
-          </ion-segment-button>
-          <ion-segment-button value="Apartamento">
-            <ion-label>Apartamento</ion-label>
-          </ion-segment-button>
-        </ion-segment>
-        <div *ngFor="let error of errorMessages.tipoResidencia">
-          <ng-container
-            *ngIf="tipoResidencia.hasError(error.type) && (tipoResidencia.dirty || tipoResidencia.touched)"
-          >
-            <small class="error-message">{{error.message}}</small>
-          </ng-container>
-        </div>
+        <div *ngIf="registrationForm.get('possuiOuPossuiuPets').value == 'true'">
+          <h3>Seus Animais</h3>
+          <ion-item>
+            <ion-label position="floating">O seu pet é castrado? </ion-label>
+          </ion-item>
+          <ion-segment formControlName="isCastrados">
+            <ion-segment-button value="true">
+              <ion-label>Sim</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="false">
+              <ion-label>Não</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+          <div *ngFor="let error of errorMessages.isCastrados">
+            <ng-container
+              *ngIf="isCastrados.hasError(error.type) && (isCastrados.dirty || isCastrados.touched)"
+            >
+              <small class="error-message">{{error.message}}</small>
+            </ng-container>
+          </div>
 
-        <ion-item>
-          <ion-label position="floating"
-            >O ambiente é propício para criação?</ion-label
-          >
-        </ion-item>
-        <ion-segment
-          value="false"
-          (ionChange)="changerAmbientePropicioParaCriacao($event)"
-        >
-          <ion-segment-button value="true">
-            <ion-label>Sim</ion-label>
-          </ion-segment-button>
-          <ion-segment-button value="false">
-            <ion-label>Não</ion-label>
-          </ion-segment-button>
-        </ion-segment>
-        <div *ngFor="let error of errorMessages.ambientePropicioParaCriacao">
-          <ng-container
-            *ngIf="ambientePropicioParaCriacao.hasError(error.type) && (ambientePropicioParaCriacao.dirty || ambientePropicioParaCriacao.touched)"
-          >
-            <small class="error-message">{{error.message}}</small>
-          </ng-container>
+          <ion-item>
+            <ion-label position="floating"
+              >Você reside em casa ou apartamento?
+            </ion-label>
+          </ion-item>
+          <ion-segment formControlName="tipoResidencia">
+            <ion-segment-button value="Casa">
+              <ion-label>Casa</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="Apartamento">
+              <ion-label>Apartamento</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+          <div *ngFor="let error of errorMessages.tipoResidencia">
+            <ng-container
+              *ngIf="tipoResidencia.hasError(error.type) && (tipoResidencia.dirty || tipoResidencia.touched)"
+            >
+              <small class="error-message">{{error.message}}</small>
+            </ng-container>
+          </div>
+
+          <ion-item>
+            <ion-label position="floating"
+              >O ambiente é propício para criação?</ion-label
+            >
+          </ion-item>
+          <ion-segment formControlName="ambientePropicioParaCriacao">
+            <ion-segment-button value="true">
+              <ion-label>Sim</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="false">
+              <ion-label>Não</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+          <div *ngFor="let error of errorMessages.ambientePropicioParaCriacao">
+            <ng-container
+              *ngIf="ambientePropicioParaCriacao.hasError(error.type) && (ambientePropicioParaCriacao.dirty || ambientePropicioParaCriacao.touched)"
+            >
+              <small class="error-message">{{error.message}}</small>
+            </ng-container>
+          </div>
         </div>
       </ion-list>
     </form>
   </div>
 </ion-content>
+
 <ion-footer translucent="true" class="ion-no-border" mode="md">
   <ion-toolbar color="translucent">
     <ion-button

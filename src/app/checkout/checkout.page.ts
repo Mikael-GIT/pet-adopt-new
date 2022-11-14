@@ -232,7 +232,6 @@ export class CheckoutPage {
       {type: 'maxlength', message: 'Nome não pode passar de 50 Caracteres'}
     ],
     isCastrados: [
-      {type: 'required', message: 'Digite seu nome'},
       {type: 'maxlength', message: 'Nome não pode passar de 50 Caracteres'}
     ],
     concordaManterInformados: [
@@ -248,17 +247,14 @@ export class CheckoutPage {
       {type: 'maxlength', message: 'Nome não pode passar de 50 Caracteres'}
     ],
     tipoResidencia: [
-      {type: 'required', message: 'Digite seu nome'},
       {type: 'maxlength', message: 'Nome não pode passar de 50 Caracteres'}
     ],
     ambientePropicioParaCriacao: [
-      {type: 'required', message: 'Digite seu nome'},
       {type: 'maxlength', message: 'Nome não pode passar de 50 Caracteres'}
     ]
   };
 
   registrationForm = this.formBuilder.group ({
-    nome: ['',[Validators.required, Validators.maxLength(5)]],
     idade: ['',[Validators.required, Validators.maxLength(5)]],
     cpf: ['',[Validators.required, Validators.maxLength(11)]],
     profissao: ['',[Validators.required, Validators.maxLength(5)]],
@@ -277,12 +273,12 @@ export class CheckoutPage {
     teraLivreAcessoAosComodos: ['',[Validators.required, Validators.maxLength(5)]],
     possuiBebeOuPretende: ['',[Validators.required, Validators.maxLength(5)]],
     residentesPossuiAlergia: ['',[Validators.required, Validators.maxLength(5)]],
-    isCastrados: ['',[Validators.required, Validators.maxLength(5)]],
+    isCastrados: ['',[Validators.maxLength(5)]],
     concordaManterInformados: ['',[Validators.required, Validators.maxLength(5)]],
     aceitaVisitasPosAdocao: ['',[Validators.required, Validators.maxLength(5)]],
     adotouoOuDoouUmPet: ['',[Validators.required, Validators.maxLength(5)]],
-    tipoResidencia: ['',[Validators.required, Validators.maxLength(5)]],
-    ambientePropicioParaCriacao: ['',[Validators.required, Validators.maxLength(5)]],
+    tipoResidencia: ['',[Validators.maxLength(50)]],
+    ambientePropicioParaCriacao: ['',[Validators.maxLength(5)]],
   });
 
   constructor(private formBuilder: FormBuilder, private adoptService: AdoptService, private localStorageService: LocalStorageService) {}
@@ -308,56 +304,4 @@ export class CheckoutPage {
     });
   }
   
-  changerPossuiOuPossuiuPets(e){
-    console.log(e.detail.value)
-    this.registrationForm.get('possuiOuPossuiuPets').setValue(e.detail.value);
-    console.log(this.registrationForm.get('possuiOuPossuiuPets'));
-  }
-
-  changerResidentesConcordamAdocao(e){
-    console.log(e.detail.value)
-    this.registrationForm.get('residentesConcordamAdocao').setValue(e.detail.value);
-  }
-
-  changerPossuiBebeOuPretende(e){
-    console.log(e.detail.value)
-    this.registrationForm.get('possuiBebeOuPretende').setValue(e.detail.value);
-  }
-
-  changerResidentesPossuiAlergia(e){
-    console.log(e.detail.value)
-    this.registrationForm.get('residentesPossuiAlergia').setValue(e.detail.value);
-  }
-  changerIsCastrados(e){
-    console.log(e.detail.value)
-    this.registrationForm.get('isCastrados').setValue(e.detail.value);
-  }
-
-  changerTeraLivreAcessoAosComodos(e){
-    console.log(e.detail.value)
-    this.registrationForm.get('teraLivreAcessoAosComodos').setValue(e.detail.value);
-  }
-  
-  changerConcordaManterInformados(e){
-    console.log(e.detail.value)
-    this.registrationForm.get('concordaManterInformados').setValue(e.detail.value);
-  }
-  changerAceitaVisitasPosAdocao(e){
-    console.log(e.detail.value)
-    this.registrationForm.get('aceitaVisitasPosAdocao').setValue(e.detail.value);
-  }
-  changerAdotouoOuDoouUmPet(e){
-    console.log(e.detail.value)
-    this.registrationForm.get('adotouoOuDoouUmPet').setValue(e.detail.value);
-  }
-
-  changerTipoResidencia(e){
-    console.log(e.detail.value)
-    this.registrationForm.get('tipoResidencia').setValue(e.detail.value);
-  }
-
-  changerAmbientePropicioParaCriacao(e){
-    console.log(e.detail.value)
-    this.registrationForm.get('ambientePropicioParaCriacao').setValue(e.detail.value);
-  }
 }

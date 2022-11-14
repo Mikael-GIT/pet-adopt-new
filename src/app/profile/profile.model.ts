@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 export class Profile {
 
-  	id: string = '';
+  id: string = '';
 	nome: string = '';
 	email: string = '';
 	telefone: string = '';
