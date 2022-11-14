@@ -25,7 +25,7 @@
       </div>
       <ion-item>
         <ion-label position="floating">Email</ion-label>
-        <ion-input formControlName="email" inputmode="text"></ion-input>
+        <ion-input formControlName="email" inputmode="text" type="email" placeholder="email@domain.com"></ion-input>
       </ion-item>
       <div *ngFor="let error of errorMessages.email">
         <ng-container *ngIf="email.hasError(error.type) && (email.dirty || email.touched)">

@@ -18,6 +18,8 @@ export class CheckoutPage {
     status: '',
   }
 
+  segmentValue: string;
+
 
   user = { 
     id: '',
@@ -162,11 +164,11 @@ export class CheckoutPage {
       {type: 'maxlength', message: 'Nome não pode passar de 50 Caracteres'}
     ],
     cpf: [
-      {type: 'required', message: 'Digite seu nome'},
-      {type: 'maxlength', message: 'Nome não pode passar de 50 Caracteres'}
+      {type: 'required', message: 'Digite seu CPF'},
+      {type: 'maxlength', message: 'CPF não pode passar de 11 Caracteres'}
     ],
     profissao: [
-      {type: 'required', message: 'Digite seu nome'},
+      {type: 'required', message: 'Digite sua profissao'},
       {type: 'maxlength', message: 'Nome não pode passar de 50 Caracteres'}
     ],
     linkFacebook: [
@@ -258,7 +260,7 @@ export class CheckoutPage {
   registrationForm = this.formBuilder.group ({
     nome: ['',[Validators.required, Validators.maxLength(5)]],
     idade: ['',[Validators.required, Validators.maxLength(5)]],
-    cpf: ['',[Validators.required, Validators.maxLength(5)]],
+    cpf: ['',[Validators.required, Validators.maxLength(11)]],
     profissao: ['',[Validators.required, Validators.maxLength(5)]],
     linkFacebook: ['',[Validators.required, Validators.maxLength(5)]],
     linkInstagram: ['',[Validators.required, Validators.maxLength(5)]],
@@ -304,5 +306,58 @@ export class CheckoutPage {
     this.adoptService.adopt(this.adoptionData).subscribe(adoption => {
       console.log(adoption);
     });
+  }
+  
+  changerPossuiOuPossuiuPets(e){
+    console.log(e.detail.value)
+    this.registrationForm.get('possuiOuPossuiuPets').setValue(e.detail.value);
+    console.log(this.registrationForm.get('possuiOuPossuiuPets'));
+  }
+
+  changerResidentesConcordamAdocao(e){
+    console.log(e.detail.value)
+    this.registrationForm.get('residentesConcordamAdocao').setValue(e.detail.value);
+  }
+
+  changerPossuiBebeOuPretende(e){
+    console.log(e.detail.value)
+    this.registrationForm.get('possuiBebeOuPretende').setValue(e.detail.value);
+  }
+
+  changerResidentesPossuiAlergia(e){
+    console.log(e.detail.value)
+    this.registrationForm.get('residentesPossuiAlergia').setValue(e.detail.value);
+  }
+  changerIsCastrados(e){
+    console.log(e.detail.value)
+    this.registrationForm.get('isCastrados').setValue(e.detail.value);
+  }
+
+  changerTeraLivreAcessoAosComodos(e){
+    console.log(e.detail.value)
+    this.registrationForm.get('teraLivreAcessoAosComodos').setValue(e.detail.value);
+  }
+  
+  changerConcordaManterInformados(e){
+    console.log(e.detail.value)
+    this.registrationForm.get('concordaManterInformados').setValue(e.detail.value);
+  }
+  changerAceitaVisitasPosAdocao(e){
+    console.log(e.detail.value)
+    this.registrationForm.get('aceitaVisitasPosAdocao').setValue(e.detail.value);
+  }
+  changerAdotouoOuDoouUmPet(e){
+    console.log(e.detail.value)
+    this.registrationForm.get('adotouoOuDoouUmPet').setValue(e.detail.value);
+  }
+
+  changerTipoResidencia(e){
+    console.log(e.detail.value)
+    this.registrationForm.get('tipoResidencia').setValue(e.detail.value);
+  }
+
+  changerAmbientePropicioParaCriacao(e){
+    console.log(e.detail.value)
+    this.registrationForm.get('ambientePropicioParaCriacao').setValue(e.detail.value);
   }
 }

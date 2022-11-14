@@ -13,7 +13,7 @@ import { UtilService } from '../util.service';
 export class LoginPage implements OnInit {
 
   loginDados: Login = {
-    login: '',
+    email: '',
     senha: ''
   };
 
@@ -32,7 +32,7 @@ export class LoginPage implements OnInit {
   btnLogin: boolean = false;
 
   login() {
-    if (this.loginDados.login != null && this.loginDados.senha != null) {
+    if (this.loginDados.email != null && this.loginDados.senha != null) {
       //load true
       this.load = true;
       //btn login off
