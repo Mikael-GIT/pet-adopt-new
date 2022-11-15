@@ -1,8 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button color="primary" class="backbtn" routerLink="/item-details" routerDirection="back">
-        <img src='../../assets/back-dark.svg' />
+      <ion-button
+        color="primary"
+        class="backbtn"
+        routerLink="/item-details"
+        routerDirection="back"
+      >
+        <img src="../../assets/back-dark.svg" />
       </ion-button>
     </ion-buttons>
 
@@ -15,27 +20,84 @@
 </ion-header>
 
 <ion-content>
-  <h1 class="title">Termos</h1>
+  <h1 class="title" *ngIf="pixGerado == false">Realizar um apadrinhamento</h1>
+  <h1 class="title" *ngIf="pixGerado == true">Realizar pagamento</h1>
 
   <div class="order-items">
     <ion-card mode="ios">
-      <ion-card-content>
-        <div class="item-img">
-          <img src='../../assets/cart/cart1.png' />
+      <ion-card-header *ngIf="pixGerado == false">
+        <ion-img
+          style="height: 100%"
+          src="https://www.petz.com.br/blog/wp-content/uploads/2020/01/como-saber-se-o-gato-e-femea-felina-1280x720.jpg"
+        ></ion-img>
+      </ion-card-header>
+
+      <ion-card-content *ngIf="pixGerado == false">
+        <form [formGroup]="registrationForm">
+        <ion-item style="width: 100%; margin-left: 10%;">
+          <ion-label position="floating" style="margin-left:2%">Valor</ion-label>
+          <ion-input
+            formControlName="transactionAmount"
+            autocapitalize
+            inputmode="text"
+          ></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.transactionAmount" style="width: 100%; margin-left: 10%;">
+          <ng-container
+            *ngIf="transactionAmount.hasError(error.type) && (transactionAmount.dirty || transactionAmount.touched)" style="width: 100%; margin-left: 10%;"
+          >
+            <small class="error-message" style="width: 100%; margin-left: 10%;">{{error.message}}</small>
+          </ng-container>
         </div>
 
-        <div class="item-info">
-          <ion-label>Valor: </ion-label>
-          <ion-input [(ngModel)]="payment.transactionAmount"></ion-input>
-          <ion-label>Descrição: </ion-label>
-          <ion-input [(ngModel)]="payment.description"></ion-input>
-
-          <img src="{{paymentResponse.qrCodeBase64}}"/>
-          <p>pix copia e cola:</p>
-          <p>{{paymentResponse.qrCode}}</p>
+        <ion-item style="width: 100%; margin-left: 10%;">
+          <ion-label position="floating" style="margin-left:2%">CPF</ion-label>
+          <ion-input
+            formControlName="cpf"
+            autocapitalize
+            inputmode="text"
+          ></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.cpf" style="width: 100%; margin-left: 10%;">
+          <ng-container
+            *ngIf="cpf.hasError(error.type) && (cpf.dirty || cpf.touched)" style="width: 100%; margin-left: 10%;"
+          >
+            <small class="error-message" style="width: 100%; margin-left: 10%;">{{error.message}}</small>
+          </ng-container>
         </div>
-        <ion-button expand="block" class="main-button" (click)="doar()">Doar</ion-button>
+
+
+        <ion-item style="width: 100%; margin-left: 10%;">
+          <ion-label position="floating" style="margin-left:2%">Descrição do PIX</ion-label>
+          <ion-input
+            formControlName="description"
+            autocapitalize
+            inputmode="text"
+          ></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.description" style="width: 100%; margin-left: 10%;">
+          <ng-container
+            *ngIf="description.hasError(error.type) && (description.dirty || description.touched)" style="width: 100%; margin-left: 10%;"
+          >
+            <small class="error-message" style="width: 100%; margin-left: 10%;">{{error.message}}</small>
+          </ng-container>
+        </div>
+        
+      </form>
       </ion-card-content>
+      <ion-card-content *ngIf="pixGerado == true">
+        <img src="{{paymentResponse.qrCodeBase64}}" style="margin-top: 10%; justify-content: center; align-items: center;"/>
+      </ion-card-content>
+      <div *ngIf="pixGerado == true" style="margin-left: 2%;">
+      <h5 >pix copia e cola:</h5>
+      <p>{{paymentResponse.qrCode}}</p>
+      </div>
+      <ion-button expand="block" class="main-button" (click)="doar()"
+      >Gerar pagamento</ion-button
+    >
     </ion-card>
   </div>
 </ion-content>
+
+
+
