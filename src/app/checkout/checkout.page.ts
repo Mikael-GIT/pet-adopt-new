@@ -79,32 +79,6 @@ export class CheckoutPage {
     return this.registrationForm.get('linkInstagram');
   }
 
-  //Endereco
-  get cep() {
-    return this.registrationForm.get('cep');
-  }
-
-  get logradouro() {
-    return this.registrationForm.get('logradouro');
-  }
-
-  get numero() {
-    return this.registrationForm.get('numero');
-  }
-  
-
-  get complemento() {
-    return this.registrationForm.get('complemento');
-  }
-
-  get bairro() {
-    return this.registrationForm.get('bairro');
-  }
-
-  get cidade() {
-    return this.registrationForm.get('cidade');
-  }
-
   get possuiOuPossuiuPets() {
     return this.registrationForm.get('possuiOuPossuiuPets');
   }
@@ -179,30 +153,6 @@ export class CheckoutPage {
       {type: 'required', message: 'Digite seu nome'},
       {type: 'maxlength', message: 'Nome não pode passar de 50 Caracteres'}
     ],
-    cep: [
-      {type: 'required', message: 'Digite seu nome'},
-      {type: 'maxlength', message: 'Nome não pode passar de 50 Caracteres'}
-    ],
-    logradouro: [
-      {type: 'required', message: 'Digite seu nome'},
-      {type: 'maxlength', message: 'Nome não pode passar de 50 Caracteres'}
-    ],
-    numero: [
-      {type: 'required', message: 'Digite seu nome'},
-      {type: 'maxlength', message: 'Nome não pode passar de 50 Caracteres'}
-    ],
-    complemento: [
-      {type: 'required', message: 'Digite seu nome'},
-      {type: 'maxlength', message: 'Nome não pode passar de 50 Caracteres'}
-    ],
-    bairro: [
-      {type: 'required', message: 'Digite seu nome'},
-      {type: 'maxlength', message: 'Nome não pode passar de 50 Caracteres'}
-    ],
-    cidade: [
-      {type: 'required', message: 'Digite seu nome'},
-      {type: 'maxlength', message: 'Nome não pode passar de 50 Caracteres'}
-    ],
     possuiOuPossuiuPets: [
       {type: 'required', message: 'Digite seu nome'},
       {type: 'maxlength', message: 'Nome não pode passar de 50 Caracteres'}
@@ -255,30 +205,24 @@ export class CheckoutPage {
   };
 
   registrationForm = this.formBuilder.group ({
-    idade: ['',[Validators.required, Validators.maxLength(5)]],
+    idade: ['',[Validators.required, Validators.maxLength(3)]],
     cpf: ['',[Validators.required, Validators.maxLength(11)]],
-    profissao: ['',[Validators.required, Validators.maxLength(5)]],
-    linkFacebook: ['',[Validators.required, Validators.maxLength(5)]],
-    linkInstagram: ['',[Validators.required, Validators.maxLength(5)]],
-    cep: ['',[Validators.required, Validators.maxLength(5)]],
-    logradouro: ['',[Validators.required, Validators.maxLength(5)]],
-    numero: ['',[Validators.required, Validators.maxLength(5)]],
-    complemento: ['',[Validators.required, Validators.maxLength(5)]],
-    bairro: ['',[Validators.required, Validators.maxLength(5)]],
-    cidade: ['',[Validators.required, Validators.maxLength(5)]],
-    possuiOuPossuiuPets: ['',[Validators.required, Validators.maxLength(5)]],
-    motivoAdocao: ['',[Validators.required, Validators.maxLength(5)]],
-    numResidentesDomicilio: ['',[Validators.required, Validators.maxLength(5)]],
-    residentesConcordamAdocao: ['',[Validators.required, Validators.maxLength(5)]],
-    teraLivreAcessoAosComodos: ['',[Validators.required, Validators.maxLength(5)]],
-    possuiBebeOuPretende: ['',[Validators.required, Validators.maxLength(5)]],
-    residentesPossuiAlergia: ['',[Validators.required, Validators.maxLength(5)]],
-    isCastrados: ['',[Validators.maxLength(5)]],
-    concordaManterInformados: ['',[Validators.required, Validators.maxLength(5)]],
-    aceitaVisitasPosAdocao: ['',[Validators.required, Validators.maxLength(5)]],
-    adotouoOuDoouUmPet: ['',[Validators.required, Validators.maxLength(5)]],
+    profissao: ['',[Validators.required, Validators.maxLength(50)]],
+    linkFacebook: ['',[Validators.required, Validators.maxLength(100)]],
+    linkInstagram: ['',[Validators.required, Validators.maxLength(100)]],
+    possuiOuPossuiuPets: ['',[Validators.required, Validators.maxLength(50)]],
+    motivoAdocao: ['',[Validators.required, Validators.maxLength(50)]],
+    numResidentesDomicilio: ['',[Validators.required, Validators.maxLength(50)]],
+    residentesConcordamAdocao: ['',[Validators.required, Validators.maxLength(50)]],
+    teraLivreAcessoAosComodos: ['',[Validators.required, Validators.maxLength(50)]],
+    possuiBebeOuPretende: ['',[Validators.required, Validators.maxLength(50)]],
+    residentesPossuiAlergia: ['',[Validators.required, Validators.maxLength(50)]],
+    isCastrados: ['',[Validators.maxLength(50)]],
+    concordaManterInformados: ['',[Validators.required, Validators.maxLength(50)]],
+    aceitaVisitasPosAdocao: ['',[Validators.required, Validators.maxLength(50)]],
+    adotouoOuDoouUmPet: ['',[Validators.required, Validators.maxLength(50)]],
     tipoResidencia: ['',[Validators.maxLength(50)]],
-    ambientePropicioParaCriacao: ['',[Validators.maxLength(5)]],
+    ambientePropicioParaCriacao: ['',[Validators.maxLength(50)]],
   });
 
   constructor(private formBuilder: FormBuilder, private adoptService: AdoptService, private localStorageService: LocalStorageService) {}

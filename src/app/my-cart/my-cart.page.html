@@ -5,114 +5,39 @@
         <img src="../../assets/back-dark.svg" />
       </ion-buttons>
     </ion-buttons>
-
-    <ion-buttons slot="end">
-      <ion-button class="notification">
-        <ion-icon name="notifications-outline" color="dark"></ion-icon>
-      </ion-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen="true">
-  <h1 class="title">Cart</h1>
+  <h1 class="title">Pedido de adoção</h1>
 
   <div class="cart-items">
+
     <ion-card mode="ios">
       <ion-card-content>
-        <div class="item-img">
-          <img src="../../assets/cart/cart1.png" />
-        </div>
 
-        <div class="item-info">
-          <p>Women t-shirt</p>
-          <p>Lotto.LTD</p>
-          <p>$34.00</p>
-
-          <div class="qty-selector">
-            <ion-button fill="clear">-</ion-button>
-            <ion-label>1</ion-label>
-            <ion-button fill="clear">+</ion-button>
-          </div>
+        <div class="item-info" style="margin-bottom: 10%;">
+          <ion-card-title style="margin-bottom: 1.5%;"><h1>Assista antes de prosseguir</h1></ion-card-title>
+          <video src="../../assets/nao-adote-um-pet-sem-antes-assistir-a-esse-video.mp4" width="100%" height="100%" type="video/mp4" controls="controls" allowfullscreen></video>
         </div>
       </ion-card-content>
     </ion-card>
 
-    <ion-card mode="ios">
-      <ion-card-content>
-        <div class="item-img">
-          <img src="../../assets/cart/cart2.png" />
-        </div>
-
-        <div class="item-info">
-          <p>Female t-shirt</p>
-          <p>Bata</p>
-          <p>$44.00</p>
-
-          <div class="qty-selector">
-            <ion-button fill="clear">-</ion-button>
-            <ion-label>1</ion-label>
-            <ion-button fill="clear">+</ion-button>
-          </div>
-        </div>
-      </ion-card-content>
-    </ion-card>
 
     <ion-card mode="ios">
       <ion-card-content>
-        <div class="item-img">
-          <img src="../../assets/cart/cart3.png" />
-        </div>
 
-        <div class="item-info">
-          <p>Shirt</p>
-          <p>Next</p>
-          <p>$54.00</p>
-
-          <div class="qty-selector">
-            <ion-button fill="clear">-</ion-button>
-            <ion-label>1</ion-label>
-            <ion-button fill="clear">+</ion-button>
-          </div>
-        </div>
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card mode="ios">
-      <ion-card-content>
-        <div class="item-img">
-          <img src="../../assets/cart/cart4.png" />
-        </div>
-
-        <div class="item-info">
-          <p>Women shirt</p>
-          <p>Plus Point</p>
-          <p>$34.00</p>
-
-          <div class="qty-selector">
-            <ion-button fill="clear">-</ion-button>
-            <ion-label>1</ion-label>
-            <ion-button fill="clear">+</ion-button>
-          </div>
-        </div>
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card mode="ios">
-      <ion-card-content>
-        <div class="item-img">
-          <img src="../../assets/cart/cart5.png" />
-        </div>
-
-        <div class="item-info">
-          <p>Shirt</p>
-          <p>Cat's Eye</p>
-          <p>$44.00</p>
-
-          <div class="qty-selector">
-            <ion-button fill="clear">-</ion-button>
-            <ion-label>1</ion-label>
-            <ion-button fill="clear">+</ion-button>
+        <div>
+          <ion-card-title style="margin-bottom: 1.5%;"><h1>Ao adotar</h1></ion-card-title>
+          <div style="display: flex; justify-content: center; flex-direction: column; color: black;">
+            <p><span class="tab"> </span>Lembre-se que uma adoção não deve ser feita por impulso. Ao adotar um bichinho, é preciso ter consciência de que ele será seu companheiro para a vida toda e que eles podem viver por mais de 20 anos. Tanto os gatos quanto os cães sofrem muito quando são abandonados ou devolvidos. É comum casos em que o animal entra em depressão e morre após ser abandonado. Por isso é importante avaliar se você está pronto para um compromisso que vai durar muitos e muitos anos!</p>
+            <p><span class="tab"></span>Todos os moradores da casa devem concordar com a adoção. Queremos que cada lar adotivo esteja ciente e aceite a responsabilidade, inclusive as financeiras, que ter um animal de estimação traz.</p>
+            <p><span class="tab"></span>No ato da adoção, será preciso assinar um Termo de Responsabilidade. Solicite cópia por e-mail, se desejar avaliar antes de adotar.</p>
+            <p><span class="tab"></span>Acompanhamos as adoções de perto, telefonando periodicamente para o lar adotivo e podendo, inclusive, visitar o animal doado. Queremos que tudo dê certo, pois todos os animais anunciados são muito queridos e amados!</p>
+            <ion-item style="font-size: 14px; margin-top: 1%;">
+              <ion-checkbox slot="start" [(ngModel)]="checked"></ion-checkbox>
+              <ion-label>Concordo e quero prosseguir</ion-label>
+            </ion-item>
           </div>
         </div>
       </ion-card-content>
@@ -121,6 +46,6 @@
 </ion-content>
 <ion-footer translucent="true" class="ion-no-border" mode="md">
   <ion-toolbar color="translucent">
-    <ion-button expand="block" class="main-button" routerLink="/checkout" routerDirection="forward">Continue</ion-button>
+    <ion-button expand="block" class="main-button" routerLink="/checkout" routerDirection="forward" [disabled]="!checked">Continue</ion-button>
   </ion-toolbar>
 </ion-footer>
