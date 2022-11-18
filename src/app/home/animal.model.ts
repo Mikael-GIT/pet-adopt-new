@@ -12,5 +12,6 @@ export class Animal {
   imagem: string = '';
   raca: string = '';
   vermifugado: false;
+  distancia = '';
   categoria_id: string = '';
 }

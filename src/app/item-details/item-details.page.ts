@@ -16,6 +16,8 @@ export class ItemDetailsPage implements OnInit {
 
   public id: any;
 
+  distancia = '1 km';
+
   animal = {
     id: '',
     nome: '',
@@ -44,8 +46,9 @@ export class ItemDetailsPage implements OnInit {
 
   ngOnInit() {
     this.activeVariation = 'size';
+    this.distancia = this.localStorageService.get('distance');
     this.petInfoService.read(this.id).subscribe(animal => {
-      this.localStorageService.set("id_animal", animal.id);
+      console.log(animal)
       this.animal = animal;
     });
   }

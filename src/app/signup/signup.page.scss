@@ -47,3 +47,13 @@ ion-toolbar {
 .sign-up ion-button {
     margin: 0;
 }
+
+.toast-custom-class {
+    --color:#ffffff;
+    --border-color:#000000;
+    --border-radius:3px;
+    --border-style:solid;
+    --border-width:3px;    
+    --background:#1833FF;
+    --button-color:#ffffff;
+}

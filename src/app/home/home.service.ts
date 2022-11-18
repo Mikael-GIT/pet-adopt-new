@@ -22,7 +22,7 @@ export class HomeService {
   }
 
 
-  readCategoria(id:string): Observable<Categoria> {
-    return this.http.get<Categoria>(`${this.baseUrl}/${id}`);
+  readCategoria(id:string, userCep: string): Observable<Categoria> {
+    return this.http.get<Categoria>(`${this.baseUrl}/${id}/${userCep}`);
   }
 }
