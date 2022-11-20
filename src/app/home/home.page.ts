@@ -1,3 +1,5 @@
+import { Animal } from './../item-details/animal.model';
+import { LocalStorageService } from './../services/local-storage.service';
 import { Categoria } from './categoria.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HomeService } from './home.service';
@@ -15,8 +17,10 @@ export class HomePage implements OnInit {
   public bestSellProducts = [];
 
 
-
+  dataDisatnce: any;
   id: string = "0";
+
+  userCep = '';
 
   categoria: Categoria;
 
@@ -55,20 +59,43 @@ export class HomePage implements OnInit {
       descricao: '',
       imagem: '',
       raca: '',
+      distancia: '',
       categoria_id: ''
     }
   ];
+
+  animal = {
+      id: '',
+      nome: '',
+      sexo: '',
+      idade: '',
+      vacinado: false,
+      porte: '',
+      cor: '',
+      descricao: '',
+      imagem: '',
+      raca: '',
+      distancia: '',
+      categoria_id: ''
+  }
 
   constructor(
     private router: Router,
     private data: DataService,
     private homeService: HomeService, 
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute, 
+    private localStorageService: LocalStorageService
   ) { }
 
   ngOnInit() {
 
     this.animais = [];
+
+    this.homeService.getDistance().subscribe(data =>{
+      this.dataDisatnce = data.value
+      console.log(this.data)
+    }
+    );
 
     this.homeService.readCategorias().subscribe(categorias => {
       this.categorias = categorias;
@@ -76,7 +103,7 @@ export class HomePage implements OnInit {
     });
 
 
-    this.homeService.readCategoria("2").subscribe(categoria => {
+    this.homeService.readCategoria("1", this.userCep).subscribe(categoria => {
       categoria.animais.forEach(animal => this.animais.push(animal));
       console.log(this.animais);
     });
@@ -87,13 +114,15 @@ export class HomePage implements OnInit {
     this.bestSellProducts = this.data.getBestSellProducts();
   }
 
-  showPetInfo(id: string){
-    this.router.navigate([`item-details/${id}`]);
+  showPetInfo(animal: Animal){
+    console.log(animal)
+    this.localStorageService.set('distance', animal.distancia);
+    this.router.navigate([`item-details/${animal.id}`]);
   }
 
   changeCategory(categoria: Categoria){
     this.animais = [];
-    this.homeService.readCategoria(categoria.id).subscribe(categoria => {
+    this.homeService.readCategoria(categoria.id, this.userCep).subscribe(categoria => {
       categoria.animais.forEach(animal => this.animais.push(animal));
     });;
   }

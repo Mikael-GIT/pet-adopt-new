@@ -1,3 +1,4 @@
+import { LocalStorageService } from './../services/local-storage.service';
 import { PetInfoService } from './pet-info.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -14,6 +15,8 @@ export class ItemDetailsPage implements OnInit {
   activeVariation: string;
 
   public id: any;
+
+  distancia = '1 km';
 
   animal = {
     id: '',
@@ -34,7 +37,8 @@ export class ItemDetailsPage implements OnInit {
     private animatioCntrl: AnimationController,
     private activatedRoute: ActivatedRoute, 
     private navCtrl: NavController, 
-    private petInfoService: PetInfoService
+    private petInfoService: PetInfoService,
+    private localStorageService: LocalStorageService
   ) { 
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     console.log(this.id);
@@ -42,8 +46,9 @@ export class ItemDetailsPage implements OnInit {
 
   ngOnInit() {
     this.activeVariation = 'size';
+    this.distancia = this.localStorageService.get('distance');
     this.petInfoService.read(this.id).subscribe(animal => {
-      console.log(animal);
+      console.log(animal)
       this.animal = animal;
     });
   }

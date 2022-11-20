@@ -13,7 +13,7 @@ import { UtilService } from '../util.service';
 export class LoginPage implements OnInit {
 
   loginDados: Login = {
-    login: '',
+    email: '',
     senha: ''
   };
 
@@ -32,18 +32,17 @@ export class LoginPage implements OnInit {
   btnLogin: boolean = false;
 
   login() {
-    if (this.loginDados.login != null && this.loginDados.senha != null) {
+    if (this.loginDados.email != null && this.loginDados.senha != null) {
       //load true
       this.load = true;
       //btn login off
       this.btnLogin = true;
 
       if (this.loginDados) {
-        this.loginService.create(this.loginDados).subscribe(
+        this.loginService.login(this.loginDados).subscribe(
           (result) => {
             if (result.id != null) {
-              this.serviceLS.set('id', result.id);
-              this.serviceLS.set('login', result.login);
+              this.serviceLS.set('user_id', result.id);
               this.util.setMenuState(true);
               this.navCtrl.navigateRoot('/home', { animationDirection: 'forward' });
             }

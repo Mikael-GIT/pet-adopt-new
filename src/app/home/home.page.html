@@ -5,12 +5,6 @@
         <img src="../../assets/menu_bar.svg" />
       </ion-menu-button>
     </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button class="notification">
-        <ion-icon name="notifications-outline" color="dark"></ion-icon>
-        <span>&nbsp;</span>
-      </ion-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -41,9 +35,14 @@
     <h2 class="font-bold">Animais</h2>
   </div>
 
+  <div class="title ion-padding" *ngIf="animais.length == 0">
+    <h2 class="font-bold">Não possuímos pets cadastrados para essa categoria. Aguarde e tente novamente mais tarde!</h2>
+  </div>
+
   <div class="product-slider ion-padding-start">
       <ion-card *ngFor="let animal of animais">
-        <ion-row (click)="showPetInfo(animal.id)">
+      <div *ngIf="animal.status == 'disponivel'">
+        <ion-row (click)="showPetInfo(animal)">
         <ion-col size="6"class="ion-text-left" routerDirection="forward">
           <img src="{{ animal.imagem }}"/>
         </ion-col>
@@ -51,9 +50,11 @@
           <div class="item-info">
             <h4 style="color: black">{{ animal.nome }}</h4>
             <p style="margin-top: 0;">{{ animal.descricao }}</p>
+            <p style="margin-top: 0;"><ion-icon name="location" style="color: red;"></ion-icon>{{ animal.distancia }} de distância</p>
           </div>
         </ion-col>
       </ion-row>
+      </div>
       </ion-card>
   </div>
 

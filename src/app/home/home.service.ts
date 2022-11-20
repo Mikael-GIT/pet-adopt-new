@@ -17,8 +17,12 @@ export class HomeService {
     return this.http.get<Categoria[]>(`${this.baseUrl}`);
   }
 
+  getDistance(): Observable<any> {
+    return this.http.get<any>('http://localhost:8080/distances');
+  }
 
-  readCategoria(id:string): Observable<Categoria> {
-    return this.http.get<Categoria>(`${this.baseUrl}/${id}`);
+
+  readCategoria(id:string, userCep: string): Observable<Categoria> {
+    return this.http.get<Categoria>(`${this.baseUrl}/${id}/${userCep}`);
   }
 }

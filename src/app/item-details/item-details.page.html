@@ -5,26 +5,13 @@
         <img src="../../assets/back-dark.svg" />
       </ion-button>
     </ion-buttons>
-
-    <ion-buttons slot="end">
-      <ion-button class="notification">
-        <ion-icon name="notifications-outline" color="dark"></ion-icon>
-        <span>&nbsp;</span>
-      </ion-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-slides pager="true" class="product-slider">
+  <ion-slides pager="false" class="product-slider">
     <ion-slide>
       <img [src]="animal.imagem"/>
-    </ion-slide>
-    <ion-slide>
-      <img src="../../assets/product-slider/prod-slide1.png" />
-    </ion-slide>
-    <ion-slide>
-              <img src="../../assets/product-slider/prod-slide1.png" />
     </ion-slide>
   </ion-slides>
 
@@ -34,6 +21,7 @@
     <h4 class="price">
       {{animal.sexo}}
     </h4>
+    <p style="margin-top: 0;"><ion-icon name="location" style="color: red;"></ion-icon>{{ distancia }} de distância</p>
   </div>
 
   <div class="seperator">
@@ -42,33 +30,38 @@
 
   <div class="review">
     
-    <ion-row>
-      <ion-col size="6">
+    <ion-row style="align-items: center; justify-content: center;">
+      <ion-col size="5" style="align-items: center; text-align: center;">
         <div class="rating">
           <img src="../../assets/product-slider/seringa.png" />
+          <span>Vacinado</span>
         </div>
 
-        {{animal.vacinado}}
+        {{animal.vacinado ? 'Sim' : 'Não'}}
       </ion-col>
-      <ion-col size="6">
+      <ion-col size="5" style="align-items: center; text-align: center;">
         <div class="rating">
           <img src="../../assets/product-slider/medicine.png" />
+          <span>Vermifugado</span>
         </div>
-        {{animal.vermifugado}}
+        {{animal.vermifugado ? 'Sim' : 'Não'}}
       </ion-col>
 
     </ion-row>
-    <ion-row>
-      <ion-col size="6">
+    <ion-row style="align-items: center; justify-content: center;">
+      <ion-col size="4" style="align-items: center; text-align: center;">
         <div class="rating">
           <img src="../../assets/product-slider/birthday.png" />
+          <span>Idade</span>
         </div>
 
         {{animal.idade}}
       </ion-col>
-      <ion-col size="6">
+      <ion-col size="4" style="align-items: center; text-align: center;">
         <div class="rating">
           <img src="../../assets/product-slider/weighing-scale.png" />
+
+          <span>Porte</span>
         </div>
          {{animal.porte}}
       </ion-col>
